@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Searchbar from 'components/Searchbar';
 import ImageGallery from 'components/ImageGallery';
 import Loader from 'components/Loader';
@@ -88,5 +89,19 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+  isLoading: PropTypes.bool,
+  showModal: PropTypes.bool,
+  selectedImage: PropTypes.object,
+};
 
 export default App;

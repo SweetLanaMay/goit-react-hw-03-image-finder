@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './Modal.module.css';
 
 class Modal extends Component {
@@ -28,11 +29,15 @@ class Modal extends Component {
     return (
       <div className={css.overlay} onClick={this.handleBackdropClick}>
         <div className={css.modal}>
-          <img src={image} alt="" />
+          <img src={image} alt={image.tags} />
         </div>
       </div>
     );
   }
 }
+
+Modal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+};
 
 export default Modal;
